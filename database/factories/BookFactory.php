@@ -2,22 +2,35 @@
 
 namespace Database\Factories;
 
+use App\Models\Book;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Models\Book>
- */
 class BookFactory extends Factory
 {
     /**
-     * Define the model's default state.
+     * Define the model for the factory.
      *
-     * @return array<string, mixed>
+     * @return string
      */
-    public function definition(): array
+    public function model()
+    {
+        return Book::class;
+    }
+
+    /**
+     * Define the fields and the default values.
+     *
+     * @return array
+     */
+    public function definition()
     {
         return [
-            //
+            'isbn' => $this->faker->isbn13,
+            'title' => $this->faker->sentence,
+            'author' => $this->faker->name,
+            'description' => $this->faker->paragraph,
+            'date_published' => $this->faker->date,
         ];
     }
 }
+
